@@ -2,8 +2,9 @@ steps:
 - name: gcr.io/cloud-builders/gcloud
   entrypoint: 'bq'
   args: ['query', '--use_legacy_sql=false', 'SELECT 1']
-
-steps:
-- name: gcr.io/cloud-builders/gcloud
-  entrypoint: 'bq'
-  args: ['query', '--use_legacy_sql=false', 'SELECT 2']
+#
+#steps:
+#- name: gcr.io/cloud-builders/gcloud
+#  entrypoint: 'bq'
+#  args: ['query', '--use_legacy_sql=false', 'SELECT 2']
+#
