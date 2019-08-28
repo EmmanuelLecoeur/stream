@@ -3,10 +3,15 @@ steps:
  entrypoint: 'bq'
  args:
  - query
- - 'SELECT count(distinct cid) as nb_user FROM `avisia-navigation-streaming.navigation_streaming.version_V1` WHERE DATE(_PARTITIONTIME) <= "2019-08-27" and date_diff(date(current_datetime), date(heure_locale), day) = 7'
+ - 'SELECT 1'
+
+ # Don't get hung up on this just about running BigQuery commands.
+ # Because you're working with containers here, you can run *anything*
+ # you darn well please. It doesn't even have to be part of the GCP
+ # ecosystem. Want to run some FORTRAN? Sure, go for it.
 
 - name: 'gcr.io/cloud-builders/gcloud'
  entrypoint: 'bq'
  args:
  - query
- - 'SELECT count(distinct cid) as nb_user, url_host FROM `avisia-navigation-streaming.navigation_streaming.version_V1` WHERE DATE(_PARTITIONTIME) <= "2019-08-27" and date_diff(date(current_datetime), date(heure_locale), day) = 7 group by url_host order by nb_user desc
+ - 'SELECT 2'
