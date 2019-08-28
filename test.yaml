@@ -1,4 +1,4 @@
 steps:
 - name: gcr.io/cloud-builders/gcloud
   entrypoint: 'bq'
-  args: ['query', '--use_legacy_sql=false', 'SELECT browser, count(distinct cid) as users_number FROM `avisia-navigation-streaming.navigation_streaming.version_V1` WHERE DATE(_PARTITIONTIME) = "2019-08-27" group by browser order by users_number desc']
+  args: ['query', 'CREATE OR REPLACE TABLE `avisia-navigation-streaming.test_req.browsers` as (SELECT browser, count(distinct cid) as users_number FROM `avisia-navigation-streaming.navigation_streaming.version_V1` WHERE DATE(_PARTITIONTIME) = "2019-08-27" group by browser order by users_number desc)']
